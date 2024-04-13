@@ -13,42 +13,11 @@ import portalVertexShader from "./shaders/portal/vertex.glsl";
 import portalFragmentShader from "./shaders/portal/fragment.glsl";
 import * as THREE from "three";
 
-export function Cat(props) {
-  const { nodes, materials } = useGLTF("./model/cat.glb");
-
-  return (
-    <group {...props} dispose={null}>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.oziCat.geometry}
-        position={[0, 0.174, -0.477]}
-        rotation={[0, 0, 0]}
-      >
-        <meshStandardMaterial color={new THREE.Color("#dbdbdb")} />
-      </mesh>
-
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.oziCat001.geometry}
-        material={nodes.oziCat001.material}
-        position={[0, 0.174, -0.477]}
-        rotation={[0, 0, 0]}
-      >
-        <meshStandardMaterial color={new THREE.Color("#ff0000")} />
-      </mesh>
-    </group>
-  );
-}
-
-useGLTF.preload("/cat.glb");
-
 const PortalMaterial = shaderMaterial(
   {
     uTime: 0,
     uColorStart: new THREE.Color("#0a0908"),
-    uColorEnd: new THREE.Color("#d1ac00"),
+    uColorEnd: new THREE.Color("#bfd200"),
   },
   portalVertexShader,
   portalFragmentShader
@@ -89,8 +58,6 @@ export default function Experience() {
         <mesh geometry={nodes.portalLight.geometry}>
           <portalMaterial ref={portalMaterial} />
         </mesh>
-
-        {/* <Cat /> */}
 
         <Sparkles
           size={6}
